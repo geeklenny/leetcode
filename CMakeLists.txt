@@ -8,7 +8,23 @@ set(CMAKE_CXX_FLAGS_DEBUG "-g3")
 set(CMAKE_CXX_FLAGS_RELEASE "-O2")
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
 
-add_subdirectory(2sum)
+SET(curdir ${PROJECT_SOURCE_DIR})
+
+##
+### Iterate over children, creating LIBRARIES
+##
+#INCLUDE_DIRECTORIES(.)
+
+FILE(GLOB children RELATIVE ${curdir} ${curdir}/*)
+FOREACH(child ${children})
+IF(IS_DIRECTORY ${curdir}/${child} 
+	AND NOT ${child} STREQUAL ".git" 
+	AND NOT ${child} STREQUAL "build" 
+	AND NOT ${child} STREQUAL "bin")
+  		 ADD_SUBDIRECTORY( ${child} )
+ENDIF()
+ENDFOREACH()
+
 
 
 
