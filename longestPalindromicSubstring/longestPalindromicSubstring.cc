@@ -27,7 +27,6 @@ class Solution {
         int tempStart = start, tempEnd = start;
 
         GetInitSbutString(s, start, tempStart, tempEnd);
-        cout << tempStart << " " << tempEnd << endl;
         while( (tempStart - 1 >= 0 ) && (tempEnd + 1 < s.length() ) )
         {
             if( s.at(tempStart-1) == s.at(tempEnd+1))
@@ -39,7 +38,6 @@ class Solution {
         }
 
         start = tempStart;
-        cout << "substring : " << s.substr(start, tempEnd-tempStart+1) <<endl;
         return tempEnd-tempStart +1;
     }
 
